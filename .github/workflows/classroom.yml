@@ -63,14 +63,52 @@ jobs:
     secrets:
       REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
 
+  deploy-loyalty:
+    name: Deploy Loyalty Service
+    needs: [ "test-loyalty" ]
+    uses: ./.github/workflows/deploy.yml
+    with:
+      service-name: loyalty
+    secrets:
+      KUBECONFIG: ${{ secrets.KUBECONFIG }}
+      PGDSN: ${{ secrets.LOYALTY_DSN }}
+
+  deploy-payment:
+    name: Deploy Payment Service
+    needs: [ "test-payment" ]
+    uses: ./.github/workflows/deploy.yml
+    with:
+      service-name: payment
+    secrets:
+      KUBECONFIG: ${{ secrets.KUBECONFIG }}
+      PGDSN: ${{ secrets.PAYMENT_PG }}
+
+  deploy-reservation:
+    name: Deploy Reservation Service
+    needs: [ "test-reservation" ]
+    uses: ./.github/workflows/deploy.yml
+    with:
+      service-name: reservation
+    secrets:
+      KUBECONFIG: ${{ secrets.KUBECONFIG }}
+      PGDSN: ${{ secrets.RESERVATION_PG }}
+
+  deploy-gateway:
+    name: Deploy Gateway Service
+    needs: [ "test-gateway" ]
+    uses: ./.github/workflows/deploy.yml
+    with:
+      service-name: gateway
+    secrets:
+      KUBECONFIG: ${{ secrets.KUBECONFIG }}
+      PGDSN: ""
+
   api_test:
     name: Autograding
-#    needs: [ "deploy-gateway", "deploy-loyalty", "deploy-payment", "deploy-reservation" ]
+    needs: [ "deploy-gateway", "deploy-loyalty", "deploy-payment", "deploy-reservation" ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      # TODO build, publish to docker hub, deploy to k8s
 
       - name: Run API Tests
         uses: matt-ball/newman-action@master
