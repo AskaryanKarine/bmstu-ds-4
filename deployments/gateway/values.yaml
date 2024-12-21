@@ -18,3 +18,5 @@ gateway:
   reservation: "http://reservation"
   loyalty: "http://loyalty"
   payment: "http://payment"
+
+host: ""
