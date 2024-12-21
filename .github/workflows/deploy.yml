@@ -37,4 +37,4 @@ jobs:
           --set 'postgresql.dsn=${{ secrets.PGDSN }}'
           --dependency-update
           -f  deployments/${{ inputs.service-name }}/values.yaml
-          ${{ inputs.service-name }} deployments/helm
+          ${{ inputs.service-name }} helm
