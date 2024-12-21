@@ -34,7 +34,7 @@ jobs:
         run: >
           helm upgrade --install -n default
           --set 'image.tag=latest'
-          --set 'postgresql.dsn=${{ secrets.PGDSN }}'
+          --set 'postgres.dsn=${{ secrets.PGDSN }}'
           --dependency-update
           -f  deployments/${{ inputs.service-name }}/values.yaml
           ${{ inputs.service-name }} helm
