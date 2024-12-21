@@ -8,8 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: {{ .Values.host }}
-      http:
+    - http:
         paths:
           - pathType: Prefix
             path: "/{{ .Values.namespace }}/{{ .Values.name }}(/|$)(.*)"

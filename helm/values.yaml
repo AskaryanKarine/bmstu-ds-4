@@ -18,5 +18,3 @@ gateway:
   reservation: ""
   loyalty: ""
   payment: ""
-
-host: ""
