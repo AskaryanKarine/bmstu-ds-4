@@ -1,4 +1,5 @@
 name: payment
+namespace: default
 
 replicaCount: 1
 

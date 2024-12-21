@@ -1,4 +1,5 @@
 name: reservation
+namespace: default
 
 replicaCount: 1
 

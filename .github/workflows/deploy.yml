@@ -32,7 +32,7 @@ jobs:
 
       - name: Helm chart install
         run: >
-          helm upgrade --install 
+          helm upgrade --install -n default
           --set 'image.tag=latest'
           --set 'postgresql.dsn=${{ secrets.PGDSN }}'
           --dependency-update

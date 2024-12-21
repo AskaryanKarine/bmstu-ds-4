@@ -1,4 +1,5 @@
 name: service
+namespace: default
 
 replicaCount: 1
 

@@ -1,4 +1,5 @@
 name: loyalty
+namespace: default
 
 replicaCount: 1
 

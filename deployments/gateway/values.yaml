@@ -1,4 +1,5 @@
 name: gateway
+namespace: default
 
 replicaCount: 1
 
