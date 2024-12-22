@@ -17,5 +17,5 @@ FROM alpine:latest AS app
 
 COPY --from=builder /go/bin/main ./go/
 
-EXPOSE 8070
+EXPOSE 80
 CMD ./go/main
