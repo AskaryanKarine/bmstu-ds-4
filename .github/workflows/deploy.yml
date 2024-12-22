@@ -33,7 +33,7 @@ jobs:
       - name: Helm chart install
         run: >
           helm upgrade --install --create-namespace -n default
-          --set 'image.tag=${{ github.sha }}'
+          --set 'image.tag=latest'
           --set 'postgres.dsn=${{ secrets.PGDSN }}'
           --dependency-update
           -f  deployments/${{ inputs.service-name }}/values.yaml
