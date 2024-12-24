@@ -15,6 +15,6 @@ app:
   env: "prod"
 
 gateway:
-  reservation: "http://reservation"
-  loyalty: "http://loyalty"
-  payment: "http://payment"
+  reservation: "http://reservation/default/reservation"
+  loyalty: "http://loyalty/default/loyalty"
+  payment: "http://payment/default/payment"
