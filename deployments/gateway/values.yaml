@@ -15,6 +15,6 @@ app:
   env: "prod"
 
 gateway:
-  reservation: "http://reservation/api/v1"
-  loyalty: "http://loyalty/default/api/v1"
-  payment: "http://payment/default/api/v1"
+  reservation: "http://194.87.86.112/default/reservation/api/v1"
+  loyalty: "http://194.87.86.112/default/loyalty/api/v1"
+  payment: "http://194.87.86.112/default/payment/api/v1"
