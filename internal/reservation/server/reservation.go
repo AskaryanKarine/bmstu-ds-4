@@ -5,6 +5,7 @@ import (
 	"github.com/AskaryanKarine/bmstu-ds-4/pkg/models"
 	"github.com/AskaryanKarine/bmstu-ds-4/pkg/validation"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/gommon/log"
 	"gorm.io/gorm"
 	"net/http"
 )
@@ -30,6 +31,7 @@ func (s *Server) createReservation(c echo.Context) error {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return c.JSON(http.StatusNotFound, models.ErrorResponse{Message: "hotel uid not found"})
 		}
+		log.Error("err = ", err)
 		return c.JSON(http.StatusInternalServerError, models.ErrorResponse{Message: err.Error()})
 	}
 
@@ -102,11 +104,13 @@ func (s *Server) canceledReservations(c echo.Context) error {
 		if errors.Is(err, models.WrongUsernameError) {
 			return c.JSON(http.StatusForbidden, models.ErrorResponse{Message: err.Error()})
 		}
+		log.Error("err = ", err)
 		return c.JSON(http.StatusInternalServerError, models.ErrorResponse{Message: err.Error()})
 	}
 
 	err = s.rs.Delete(c.Request().Context(), uid)
 	if err != nil {
+		log.Error("err = ", err)
 		return c.JSON(http.StatusInternalServerError, models.ErrorResponse{Message: err.Error()})
 	}
 	return c.JSON(http.StatusNoContent, echo.Map{})
