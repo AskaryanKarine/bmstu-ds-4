@@ -15,6 +15,8 @@ func SetStandardSetting(e *echo.Echo) {
 		AllowCredentials: true,
 	}))
 
+	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{}))
+
 	e.Validator = validation.MustRegisterCustomValidator(validator.New())
 }
 
