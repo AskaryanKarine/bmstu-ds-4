@@ -20,7 +20,7 @@ spec:
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           command:
             - ./go/main
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
             - name: POSTGRES_DSN
               value: {{ quote .Values.postgres.dsn }}
