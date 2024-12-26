@@ -26,8 +26,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ steps.repository.outputs.lowercase }}/${{ inputs.service-name }}:latest -f ./deployments/${{ inputs.service-name }}/Dockerfile .      
+          docker build -t ghcr.io/${{ steps.repository.outputs.lowercase }}/${{ inputs.service-name }}:${{ github.sha }} -f ./deployments/${{ inputs.service-name }}/Dockerfile .      
 
       - name: Push Docker image to GitHub Container Registry
         run: |
-          docker push ghcr.io/${{ steps.repository.outputs.lowercase }}/${{ inputs.service-name }}:latest
+          docker push ghcr.io/${{ steps.repository.outputs.lowercase }}/${{ inputs.service-name }}:${{ github.sha }}
